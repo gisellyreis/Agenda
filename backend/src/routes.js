@@ -2,23 +2,24 @@ const express = require('express');
 
 const routes = express.Router();
 
-routes.get('/contacts', (req, res) => {
-    res.send('Listar contatos');
-})
+const UserController = require('./controllers/UserController');
+const ContactController = require('./controllers/ContactController');
 
-routes.post('/contacts/new', (req, res) => {
-    const body = req.body;
-    console.log(body);
-    res.json(body);
-})
+routes.get('/contacts', ContactController.index)
 
-routes.post('/singUp', (req, res) => {
-    res.send('Cria conta de usuario');
-})
+routes.post('/contacts/new', ContactController.create)
+
+routes.post('/contacts/:id', ContactController.update)
+
+routes.delete('/contacts/:id', ContactController.delete)
+
+routes.post('/singUp', UserController.create)
 
 routes.post('/login', (req, res) => {
     res.send('Faz login de usuario');
 })
+
+routes.get('/session',  UserController.index)
 
 
 module.exports = routes;
