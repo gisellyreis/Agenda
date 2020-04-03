@@ -31,17 +31,16 @@ module.exports = {
     async create(req, res) {
         const { name, email, phone, github_username, linkedin_username } = req.body;
         const user_id = req.headers.authorization;
-
-        // console.log(name, email, phone, github_username, linkedin_username);
-       /**
-        *  const contact = await connection('contacts')
-        .where('user_id', user_id)
+       
+        const user = await connection('users')
+        .where('id', user_id)
+        .select('id')
         .first();
 
-        if(!contact || contact.user_id != user_id) {
-            return res.status(401).json({error: 'Operation not permitted'});
+        if(!user || user.id != user_id) {
+            return res.json({error: 'Operation Not Permitted'});
         }
-        */
+        
 
         const [id] = await connection('contacts').insert({
             user_id,

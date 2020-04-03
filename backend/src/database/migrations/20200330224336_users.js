@@ -8,6 +8,7 @@ exports.up = function(knex) {
     table.string('phone').notNullable();
     table.string('github_username');
     table.string('linkedin_username');
+    table.string('avatar_url');
   });
 };
 
