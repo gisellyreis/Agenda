@@ -1,0 +1,40 @@
+.nav-container {
+    width: 100%;
+    max-width: 1180px;
+    padding: 0 30px;
+    margin: 32px auto;
+
+    display: flex;
+    align-items: center;
+}
+
+.nav-container ul {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 16px;
+}
+
+.nav-container ul li {
+    padding: 16px;
+    background: #fff;
+    border-radius: 8px;
+    position: relative;
+    text-align: center;
+}
+
+.nav-container ul li:hover {
+    opacity: 0.8;
+}
+
+.nav-container ul .a {
+    text-decoration: none;
+    color: #8e4dff;
+    font-size: 14px;
+    font-weight: 700;
+    margin: 10px;
+}
+
+.nav-container ul .a:hover {
+    color: #5a2ea6;
+}

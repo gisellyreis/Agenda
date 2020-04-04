@@ -1,0 +1,40 @@
+.update-container{
+    width: 100%;
+    max-width: 1120px;
+    margin: 0 auto;
+    margin-top: 32px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.update-container .content {
+    width: 100%;
+    padding: 96px;
+    background: #f0f0f5;
+    box-shadow: 0 0 100px rgba(0, 0, 0, 0.1);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.update-container .content section {
+    width: 100%;
+    max-width: 400px;
+}
+
+.update-container .content section h1 {
+    margin: 64px 0 32px;
+    font-size: 32px;
+}
+
+.update-container .content form {
+    width: 100%;
+    max-width: 450px;
+}
+
+.update-container .content form input {
+    margin-top: 8px;
+}

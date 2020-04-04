@@ -3,15 +3,18 @@ import { Link } from 'react-router-dom';
 import { FiArrowLeft } from 'react-icons/fi';
 
 import './styles.css';
+import Nav from '../Nav';
 
-export default function NewCard() {
+export default function NewContact() {
     return (
-        <div className="register-container">
+        <div>
+            <Nav />
+            <div className="contact-container">
             <div className="content">
                 <section>
                     <h1>Criar novo contato</h1>
 
-                    <Link className="back-link" to="/">
+                    <Link className="back-link" to="/profile">
                         <FiArrowLeft size={16} color="#1316EB" />
                          Voltar para home                   
                     </Link>
@@ -42,6 +45,7 @@ export default function NewCard() {
                     <button className="button" type="submit">Salvar</button>
                 </form>
             </div>
+        </div>
         </div>
     );
 }
