@@ -1,9 +1,19 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 import './styles.css';
+import { FiPower } from 'react-icons/fi';
 
 export default function Nav() {
+
+    const history = useHistory();
+
+    function handleLogout() {
+        localStorage.clear();
+
+        history.push('/');
+    }
+
     return (
        <div className="nav-container">
            <ul>
@@ -17,6 +27,10 @@ export default function Nav() {
                     <li>Update Profile</li>
                 </Link>
            </ul>
+
+           <button onClick={handleLogout} type="button">
+               <FiPower size={18} color="#e02041" />
+           </button>
        </div> 
     );
 }

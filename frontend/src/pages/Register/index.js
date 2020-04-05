@@ -1,10 +1,43 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { FiArrowLeft } from 'react-icons/fi';
 
+import api from '../../services/api';
+
 import './styles.css';
+import { useState } from 'react';
 
 export default function Register() {
+    
+    const [user_name, setUserName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [phone, setPhone] = useState('');
+
+    const history = useHistory();
+
+    async function handleRegister(e) {
+        e.preventDefault();
+
+        const data = {
+            user_name,
+            email,
+            password,
+            phone,
+        };
+
+        try {
+            await api.post('singUp', data);
+
+            history.push('/');
+            
+        } catch (error) {
+            
+        }
+
+    };
+
+
     return (
         <div className="register-container">
             <div className="content">
@@ -17,23 +50,22 @@ export default function Register() {
                     </Link>
                 </section>
 
-                <form onSubmit={() => {}} >
+                <form onSubmit={handleRegister} >
                     <input placeholder="Nome" 
-                           value="" 
-                           onChange={() => {}}
+                           value={user_name} 
+                           onChange={e => setUserName(e.target.value)}
                     />
                     <input placeholder="Email" 
-                           value="" 
-                           onChange={() => {}}
+                           value={email} 
+                           onChange={e => setEmail(e.target.value)}
                     />
                     <input placeholder="Password" 
-                           type="password"
-                           value="" 
-                           onChange={() => {}}
+                           value={password} 
+                           onChange={e => setPassword(e.target.value)}
                     />
                     <input placeholder="Telefone" 
-                           value="" 
-                           onChange={() => {}}
+                           value={phone} 
+                           onChange={e => setPhone(e.target.value)}
                     />
 
                     <button className="button" type="submit">SingUp</button>

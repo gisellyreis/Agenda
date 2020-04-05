@@ -23,7 +23,7 @@ module.exports = {
             user_name: user_name,
             password: password
         })
-        .select('id', 'user_name')
+        .select('*')
         .first();
 
         if(!user) {

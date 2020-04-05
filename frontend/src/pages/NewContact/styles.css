@@ -25,7 +25,7 @@
     max-width: 400px;
 }
 
-.contact-container .content section h1 {
+.contact-container .content section h1 { 
     margin: 64px 0 32px;
     font-size: 32px;
 }
@@ -37,4 +37,29 @@
 
 .contact-container .content form input {
     margin-top: 8px;
+}
+
+.contact-container .content .but {
+    border: none;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    margin-top: 40px;
+    color: rgba(7, 9, 94, 0.5);
+    font-size: 18px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: opacity 0.2s;
+}
+
+.contact-container .content .but:hover {
+    border-color: #999;
+}
+  
+.contact-container .content .but svg {
+    margin-right: 8px;
+}
+  
+.contact-container .content .but:hover {
+    opacity: 0.8;
 }
