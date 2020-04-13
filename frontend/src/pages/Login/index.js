@@ -43,7 +43,7 @@ export default function Login() {
                     </Link>
                 </section>
 
-                <form onSubmit={handleLogin} >
+                <form onSubmit={handleLogin} className="form">
                     <input placeholder="Nome" 
                            value={user_name}
                            onChange={e => setUserName(e.target.value)}

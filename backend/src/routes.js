@@ -6,6 +6,7 @@ const UserController = require('./controllers/UserController');
 const ContactController = require('./controllers/ContactController');
 const SessionController = require('./controllers/SessionController');
 const ProfileController = require('./controllers/ProfileController');
+const SearchController = require('./controllers/SearchController');
 
 routes.get('/contacts', ContactController.index)
 
@@ -14,6 +15,8 @@ routes.post('/contacts/new', ContactController.create)
 routes.post('/contacts/:id', ContactController.update)
 
 routes.delete('/contacts/:id', ContactController.delete)
+
+routes.get('/search', SearchController.search)
 
 routes.post('/singUp', UserController.create)
 

@@ -7,6 +7,8 @@ import Register from './pages/Register';
 import NewContact from './pages/NewContact';
 import Profile from './pages/Profile';
 import UpdateProfile from './pages/UpdateProfile';
+import SearchContact from './pages/SearchContact';
+import UpdateContact from './pages/UpdateContact';
 
 export default function Routes() {
     return (
@@ -16,8 +18,10 @@ export default function Routes() {
             <Route path="/register" component={Register} />
             
             <Route path="/profile" component={Profile} />
+            <Route path="/search" component={SearchContact} />
             <Route path="/contacts/new" component={NewContact} />
             <Route path="/update" component={UpdateProfile} />
+            <Route path="/contacts/update" component={UpdateContact} />
         </Switch>
         </BrowserRouter> 
     );

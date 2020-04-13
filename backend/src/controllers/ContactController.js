@@ -62,12 +62,13 @@ module.exports = {
 
         const contact = await connection('contacts')
         .where('id', id)
-        .select('user_id')
         .first();
 
         if(contact.user_id != user_id) {
             return res.status(401).json({error: 'Operation not permitted'});
         }
+
+        res.send(contact)
 
         await connection('contacts')
         .where('id', id)
@@ -79,7 +80,7 @@ module.exports = {
             linkedin_username,
         });
 
-        return res.json({ message: 'Contact successfully updated', id });
+        return res.json({ message: 'Contact successfully updated' });
        
     },
 

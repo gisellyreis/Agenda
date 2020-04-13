@@ -62,7 +62,7 @@ export default function UpdateProfile() {
                     </Link>
                 </section>
 
-                <form onSubmit={handleUpdate} >
+                <form onSubmit={handleUpdate} className="form">
                     <input placeholder="Nome" 
                            value={user_name} 
                            onChange={e => setUserName(e.target.value)}

@@ -14,7 +14,7 @@ export default function Register() {
     const [password, setPassword] = useState('');
     const [phone, setPhone] = useState('');
 
-    const history = useHistory();
+    const history = useHistory(); 
 
     async function handleRegister(e) {
         e.preventDefault();
@@ -50,7 +50,7 @@ export default function Register() {
                     </Link>
                 </section>
 
-                <form onSubmit={handleRegister} >
+                <form onSubmit={handleRegister} className="form">
                     <input placeholder="Nome" 
                            value={user_name} 
                            onChange={e => setUserName(e.target.value)}

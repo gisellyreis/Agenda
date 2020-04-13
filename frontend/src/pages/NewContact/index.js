@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { FiArrowLeft, FiGithub } from 'react-icons/fi';
 
@@ -12,6 +12,12 @@ export default function NewContact() {
     const userId = localStorage.getItem('userId');
 
     const history = useHistory();
+
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [phone, setPhone] = useState('');
+    const [github_username, setGitHub] = useState('');
+    const [linkedin_username, setLinkedin] = useState('');
 
     async function handleImportGit(e) {
         e.preventDefault();
@@ -28,6 +34,33 @@ export default function NewContact() {
             alert('Erro ao importar contatos.')
         }
     }
+
+    async function handleNewContact(e) {
+        e.preventDefault();
+
+        const data = {
+            name,
+            email,
+            phone,
+            github_username,
+            linkedin_username,
+        };
+
+        try {
+            await api.post('contacts/new', data , {
+                headers: {
+                    Authorization: userId,
+                }
+            })
+
+            history.push('/profile');
+            
+        } catch (error) {
+            
+        }
+
+    };
+
     return (
         <div>
             <Nav />
@@ -41,7 +74,7 @@ export default function NewContact() {
                         <FiGithub size={16} color="#1316EB" />
                             Importar do GitHub
                     </button>                           
-                    </Link>
+                    </Link> 
 
                     <Link className="back-link" to="/profile">
                         <FiArrowLeft size={16} color="#1316EB" />
@@ -49,26 +82,26 @@ export default function NewContact() {
                     </Link>
                 </section>
 
-                <form onSubmit={() => {}} >
+                <form onSubmit={handleNewContact} className="form">
                     <input placeholder="Nome" 
-                           value="" 
-                           onChange={() => {}}
+                           value={name} 
+                           onChange={e => setName(e.target.value)}
                     />
                     <input placeholder="Telefone" 
-                           value="" 
-                           onChange={() => {}}
+                           value={phone} 
+                           onChange={e => setPhone(e.target.value)}
                     />
                     <input placeholder="E-mail" 
-                           value="" 
-                           onChange={() => {}}
+                           value={email} 
+                           onChange={e => setEmail(e.target.value)}
                     />
                     <input placeholder="GitHub Username" 
-                           value="" 
-                           onChange={() => {}}
+                           value={github_username} 
+                           onChange={e => setGitHub(e.target.value)}
                     />
                     <input placeholder="Linkedin Username" 
-                           value="" 
-                           onChange={() => {}}
+                           value={linkedin_username} 
+                           onChange={e => setLinkedin(e.target.value)}
                     />
 
                     <button className="button" type="submit">Salvar</button>

@@ -7,25 +7,33 @@ import './styles.css';
 import Nav from '../Nav';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
 
-export default function Profile() {
+export default function Search() {
 
     const [contacts, setContacts] = useState([]);
 
     const userId = localStorage.getItem('userId');
     // const userName = localStorage.getItem('userName');
- 
-    useEffect(() => {
-        api.get('profile', {
-            headers: {
-                Authorization: userId,
-            }
-        }).then(res => {
-            setContacts(res.data);
-        })
-    }, [userId]);
+    const contact_name = localStorage.getItem('contactName');
 
+    useEffect(() => {
+        async function handleSearch() {
+           // e.preventDdefault();
+            await api.get('search', {
+                headers: {
+                    Authorization: userId,
+                },
+                params: {
+                    name: contact_name,
+                }
+            }).then(res => {
+                setContacts(res.data);
+            })
+        }
+        handleSearch();
+    }, []);
+ 
+   
     async function handleDeleteContact(id) {
         try {
             await api.delete(`contacts/${id}`, {
@@ -60,7 +68,7 @@ export default function Profile() {
                         <p>{contact.phone} </p>
     
                         <strong>E-mail</strong>
-                        <p>{contact.email}</p> 
+                        <p>{contact.email}</p>
                     </div>
                     
                     <div className="input-group" >
@@ -75,12 +83,9 @@ export default function Profile() {
                     <button onClick={() => handleDeleteContact(contact.id)} className="delete">
                         <FiTrash2 size={20} color="a8a8b3" />
                     </button>
-            
-                    <Link to="/contacts/update" >
-                    <button  className="update">
+                    <button onClick="" className="update">
                         <FiEdit3 size={20} color="a8a8b3" />
                     </button>
-                    </Link>
                 </li>
                 ))}
              </ul>

@@ -19,7 +19,7 @@ button {
   cursor: pointer;
 }
 
-form input {
+.form input {
   width: 100%;
   min-height: 60px;
   color: #333;
