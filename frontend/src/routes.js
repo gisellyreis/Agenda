@@ -21,7 +21,7 @@ export default function Routes() {
             <Route path="/search" component={SearchContact} />
             <Route path="/contacts/new" component={NewContact} />
             <Route path="/update" component={UpdateProfile} />
-            <Route path="/contacts/update" component={UpdateContact} />
+            <Route path="/contact" component={UpdateContact} />
         </Switch>
         </BrowserRouter> 
     );

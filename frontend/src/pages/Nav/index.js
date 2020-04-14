@@ -37,6 +37,7 @@ export default function Nav() {
                     <li>Update Profile</li>
                 </Link>
            </ul>
+           <div className="right-side">
            <div className="search">
                 <form onSubmit={handleSearch}  >
                     <input placeholder="Search Contact" 
@@ -47,9 +48,10 @@ export default function Nav() {
                 </form>
             </div>
 
-           <button onClick={handleLogout} type="button">
+           <button className="power-off" onClick={handleLogout} type="button">
                <FiPower size={18} color="#e02041" />
            </button>
+           </div>
        </div> 
     );
 }

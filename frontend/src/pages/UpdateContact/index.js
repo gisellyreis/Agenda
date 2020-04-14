@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { FiArrowLeft } from 'react-icons/fi';
+import { useState } from 'react';
 
 import api from '../../services/api';
 
@@ -10,20 +11,19 @@ import Nav from '../Nav';
 export default function UpdateContact() {
 
     const userId = localStorage.getItem('userId');
-    const [contact, setContact] = useState({});
 
-      
+    const id = localStorage.getItem('id');
     const [name, setName] = useState(localStorage.getItem('name'));
-    const [email, setEmail] = useState('');
-    const [phone, setPhone] = useState('');
-    const [github_username, setGitHub] = useState('');
-    const [linkedin_username, setLinkedin] = useState('');
+    const [email, setEmail] = useState(localStorage.getItem('email'));
+    const [phone, setPhone] = useState(localStorage.getItem('phone'));
+    const [github_username, setGitHub] = useState(localStorage.getItem('github_username'));
+    const [linkedin_username, setLinkedin] = useState(localStorage.getItem('linkedin_username'));
+
 
     const history = useHistory();
-
       
-    async function handleUpdateContact(id) {
-
+    async function handleUpdateContact(e) {
+        e.preventDefault();
         const data = {
             name,
             email,
@@ -31,19 +31,6 @@ export default function UpdateContact() {
             github_username,
             linkedin_username,
         };
-
-       try {
-        const res = await api.post(`contacts/${id}`, data, {
-            headers: {
-                Authorization: userId,
-            }
-        });
-        setContact(res.data);
-        console.log(res.data.nome);
-       } catch (error) {
-           alert('Ocorreu um erro. ' +error)
-       }
-
     
         try {
             await api.post(`contacts/${id}`, data, {
@@ -54,8 +41,9 @@ export default function UpdateContact() {
             
             history.push('/profile');
         } catch (error) {
-           // alert('Erro ao deletar contato.')
-        }
+            alert('Erro ao atualizar contato.' + error)
+        };
+
     }
 
     return (
@@ -71,8 +59,8 @@ export default function UpdateContact() {
                          Voltar para home                   
                     </Link>
                 </section> 
-                                
-                <form onSubmit={() => handleUpdateContact(contact.id)} className="form">
+                                 
+                <form onSubmit={handleUpdateContact} className="form">
                  
                     <input placeholder="Nome" 
                            value={name} 

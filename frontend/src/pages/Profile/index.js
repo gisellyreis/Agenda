@@ -7,11 +7,14 @@ import './styles.css';
 import Nav from '../Nav';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 export default function Profile() {
 
     const [contacts, setContacts] = useState([]);
+    const history = useHistory();
+
+    
 
     const userId = localStorage.getItem('userId');
     // const userName = localStorage.getItem('userName');
@@ -40,6 +43,26 @@ export default function Profile() {
         }
     }
 
+    async function handleUpdate(id) {
+        try {
+           const data = await api.get(`contact/${id}`, {
+                headers: {
+                    Authorization: userId,
+                }
+            });
+            const contact = data.data;
+            localStorage.setItem('id', contact.id)
+            localStorage.setItem('name', contact.name)
+            localStorage.setItem('phone', contact.phone)
+            localStorage.setItem('email', contact.email)
+            localStorage.setItem('github_username', contact.github_username)
+            localStorage.setItem('linkedin_username', contact.linkedin_username)
+
+            history.push('/contact');
+        } catch (error) {
+            alert('Erro ao selecionar contato.')
+        }
+    }
 
     return (
 
@@ -76,11 +99,9 @@ export default function Profile() {
                         <FiTrash2 size={20} color="a8a8b3" />
                     </button>
             
-                    <Link to="/contacts/update" >
-                    <button  className="update">
+                    <button onClick={() => handleUpdate(contact.id)}  className="update">
                         <FiEdit3 size={20} color="a8a8b3" />
                     </button>
-                    </Link>
                 </li>
                 ))}
              </ul>

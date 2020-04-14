@@ -18,7 +18,6 @@ export default function UpdateProfile() {
     const [github_username, setGitHub] = useState(localStorage.getItem('userGit'));
     const [linkedin_username, setLinkedin] = useState(localStorage.getItem('userLinkedin'));
 
-    const telefone = localStorage.getItem('userPhone');
     const history = useHistory();
 
 
@@ -68,7 +67,7 @@ export default function UpdateProfile() {
                            onChange={e => setUserName(e.target.value)}
                     />
                     <input placeholder="Telefone" 
-                           value={telefone} 
+                           value={phone} 
                            onChange={e => setPhone(e.target.value)}
                     />
                     <input placeholder="E-mail" 

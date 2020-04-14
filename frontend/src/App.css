@@ -68,3 +68,17 @@ button {
 .back-link:hover {
   opacity: 0.8;
 }
+
+p {
+  color: #333;
+  margin: 8px;
+  margin-top: -4px;
+}
+
+p a {
+  color: #333;
+}
+
+a {
+  text-decoration: none;
+}

@@ -39,23 +39,23 @@
     color: #5a2ea6;
 }
 
-.nav-container button {
+.nav-container .power-off { 
     height: 45px;
     width: 60px;
     border-radius: 4px;
     border: 1px solid #dcdce6;
     background: transparent;
-    margin-left: 30px;
+    margin-left: 90px;
     transition: border-color 0.2s;
 }
 
 .nav-container button:hover {
     border-color: #999;
-}
+} 
 
 .search {
     float: left;
-    margin-left: 80px;
+    margin-left: 40px;
 }
 
 .search input{
@@ -68,16 +68,22 @@
 }
 
 .search button {
-    height: 45px;
-    width: 80px;
+    position: absolute;
+    min-height: 45px;
+    width: 60px;
     color: #333;
     border-radius: 4px;
     border: 1px solid #dcdce6;
     background: transparent;
-    margin-left: 16px;
+    margin-left: 12px;
     transition: border-color 0.2s;
 }
 
 .search button:hover {
     border-color: #999;
+}
+
+.right-side {
+    float: left;
+    margin-left: 40px;
 }

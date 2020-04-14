@@ -31,7 +31,7 @@ export default function Search() {
             })
         }
         handleSearch();
-    }, []);
+    });
  
    
     async function handleDeleteContact(id) {
